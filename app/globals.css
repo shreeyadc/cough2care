@@ -1,174 +1,328 @@
-/* ===============================
-   FONT IMPORTS
-   =============================== */
-   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-   @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
-   
-   /* ===============================
-      DESIGN TOKENS / THEME
-      =============================== */
-   :root {
-     /* Backgrounds */
-     --bg-primary: #0b0f1a;
-     --bg-secondary: #11182a;
-     --bg-tertiary: #0f1d2e;
-   
-     /* Text */
-     --text-primary: #e6f1ff;
-     --text-secondary: #9fb3c8;
-     --text-muted: #6b7c93;
-   
-     /* Accents */
-     --accent-blue: #4cc9f0;
-     --accent-cyan: #2de2e6;
-   
-     /* Status */
-     --success: #2ecc71;
-     --warning: #f1c40f;
-     --danger: #e74c3c;
-   
-     /* Borders */
-     --border-subtle: rgba(255, 255, 255, 0.08);
-   
-     /* Glow */
-     --glow-blue: 0 0 25px rgba(76, 201, 240, 0.35);
-     --glow-green: 0 0 25px rgba(46, 204, 113, 0.35);
-     --glow-yellow: 0 0 25px rgba(241, 196, 15, 0.35);
-     --glow-red: 0 0 25px rgba(231, 76, 60, 0.35);
-   
-     /* Fonts */
-     --font-primary: 'Inter', system-ui, sans-serif;
-     --font-mono: 'JetBrains Mono', monospace;
-   
-     /* Sizes */
-     --text-xs: 0.75rem;
-     --text-sm: 0.875rem;
-     --text-md: 1rem;
-     --text-lg: 1.25rem;
-     --text-xl: 1.75rem;
-     --text-xxl: 2.25rem;
-   
-     /* Spacing */
-     --space-xs: 4px;
-     --space-sm: 8px;
-     --space-md: 16px;
-     --space-lg: 24px;
-     --space-xl: 32px;
-   
-     /* Radius */
-     --radius-sm: 6px;
-     --radius-md: 10px;
-     --radius-lg: 16px;
-   
-     /* Motion */
-     --transition-fast: 0.15s ease;
-     --transition-medium: 0.3s ease;
-   }
-   
-   /* ===============================
-      RESET / BASE
-      =============================== */
-   *,
-   *::before,
-   *::after {
-     box-sizing: border-box;
-   }
-   
-   html,
-   body {
-     margin: 0;
-     padding: 0;
-     background: radial-gradient(
-       circle at top,
-       var(--bg-tertiary),
-       var(--bg-primary)
-     );
-     color: var(--text-primary);
-     font-family: var(--font-primary);
-     line-height: 1.6;
-     -webkit-font-smoothing: antialiased;
-   }
-   
-   /* ===============================
-      TYPOGRAPHY
-      =============================== */
-   h1, h2, h3, h4 {
-     font-weight: 600;
-     margin: 0;
-   }
-   
-   p {
-     margin: 0;
-     color: var(--text-secondary);
-   }
-   
-   .muted {
-     color: var(--text-muted);
-   }
-   
-   /* ===============================
-      LINKS
-      =============================== */
-   a {
-     color: var(--accent-blue);
-     text-decoration: none;
-   }
-   
-   /* ===============================
-      BUTTONS
-      =============================== */
-   button {
-     font-family: inherit;
-     cursor: pointer;
-   }
-   
-   .btn {
-     padding: 10px 20px;
-     border-radius: var(--radius-md);
-     border: 1px solid var(--border-subtle);
-     background: transparent;
-     color: var(--text-primary);
-     transition: var(--transition-medium);
-   }
-   
-   .btn:hover {
-     background: rgba(255, 255, 255, 0.05);
-   }
-   
-   .btn-primary {
-     background: linear-gradient(
-       135deg,
-       var(--accent-blue),
-       var(--accent-cyan)
-     );
-     color: #000;
-     box-shadow: var(--glow-blue);
-   }
-   
-   /* ===============================
-      CARDS
-      =============================== */
-   .card {
-     background: linear-gradient(
-       180deg,
-       rgba(255,255,255,0.05),
-       rgba(255,255,255,0.01)
-     );
-     border: 1px solid var(--border-subtle);
-     border-radius: var(--radius-lg);
-     padding: var(--space-lg);
-     backdrop-filter: blur(14px);
-   }
-   
-   /* ===============================
-      STATUS + GLOW
-      =============================== */
-   .status-green { color: var(--success); }
-   .status-yellow { color: var(--warning); }
-   .status-red { color: var(--danger); }
-   
-   .glow-blue { box-shadow: var(--glow-blue); }
-   .glow-green { box-shadow: var(--glow-green); }
-   .glow-yellow { box-shadow: var(--glow-yellow); }
-   .glow-red { box-shadow: var(--glow-red); }
-   
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ================= GLOBAL ================= */
+html, body {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top, #0b1c2d, #020617);
+  color: white;
+  font-family: var(--font-poppins), sans-serif; /* use Poppins */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ================= HEADER ================= */
+.site-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  z-index: 100;
+}
+
+.header-inner {
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+  padding: 12px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #4fd1c5;
+  letter-spacing: 0.5px;
+  margin-left: 0;
+}
+
+.header-inner button {
+  margin-left: auto;
+}
+
+/* ================= BUTTONS ================= */
+.btn {
+  padding: 12px 26px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: none;
+  background: #1f2937;
+  color: white;
+  cursor: pointer;
+  transition: 0.25s ease;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background: #374151;
+  transform: translateY(-1px);
+}
+
+.btn.primary {
+  background: #4fd1c5;
+  color: black;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.btn.primary:hover {
+  background: #38b2ac;
+  transform: translateY(-2px);
+}
+
+/* ================= HERO ================= */
+.hero {
+  position: relative;
+  width: 100vw;
+  min-height: 650px;
+  padding: 160px 60px 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  background-image: url('/images/Coughing.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+/* Overlay for readability */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero typography */
+.hero h1 {
+  font-size: 64px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  text-align: left;
+}
+
+.hero p {
+  margin-top: 16px;
+  font-size: 20px;
+  color: #e0e0e0;
+  max-width: 500px;
+}
+
+.hero .btn.primary {
+  padding: 16px 32px;
+  font-size: 18px;
+  margin-top: 24px;
+}
+
+/* ================= GLASS CARD ================= */
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 24px 32px;
+  border-radius: 18px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  max-width: 700px;
+}
+
+/* Waveform (horizontal on desktop) */
+.glass-card .wave-bars {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 4px;
+  height: 100px;
+  width: 120px;
+}
+
+.glass-card .wave-bars span {
+  width: 6px;
+  background: #4fd1c5;
+  border-radius: 4px;
+  animation: pulse 3s infinite ease-in-out alternate;
+}
+
+.glass-card .wave-bars span:nth-child(even) {
+  animation-delay: 0.15s;
+}
+
+/* Pulse animation with 3-stage heights */
+@keyframes pulse {
+  0% { height: 40px; }
+  25% { height: 80px; }
+  50% { height: 50px; }
+  75% { height: 100px; }
+  100% { height: 60px; }
+}
+
+/* Text container on the right */
+.glass-card .card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.glass-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.glass-card p {
+  font-size: 16px;
+  color: #cbd5e1;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* ================= SECTIONS ================= */
+.section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 80px 20px;
+}
+
+.section h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #4fd1c5;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ================= CARDS GRID ================= */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* About section cards - black background */
+.card {
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 22px;
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  transition: 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.card p {
+  margin-top: 8px;
+  color: #cbd5e1;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: left;
+}
+
+/* Images on cards with adjustable sizes */
+.card-img {
+  display: block;
+  margin: 0 auto 12px;
+  object-fit: contain;
+  max-width: 100%;    /* fit inside card */
+  height: 150px;
+}
+
+/* Individual image classes for separate sizing */
+.card-img.audio {
+  max-width: 100px;
+  height: auto;
+}
+
+.card-img.clinical {
+  max-width: 90px;
+  height: auto;
+}
+
+.card-img.globe {
+  max-width: 110px;
+  height: auto;
+}
+
+/* ================= STATS ================= */
+.stat {
+  font-size: 44px;
+  font-weight: 800;
+  color: #4fd1c5;
+  margin-top: 10px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-top: 140px;
+    min-height: 500px;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  .glass-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .glass-card .wave-bars {
+    width: 100%;
+    height: 50px;
+    justify-content: space-between;
+  }
+
+  .glass-card .wave-bars span {
+    width: 8px;
+  }
+}
