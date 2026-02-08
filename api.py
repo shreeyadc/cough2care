@@ -46,8 +46,8 @@ print(f"Loading model on {device}...")
 
 # Load Model ONCE globally so we don't reload it for every user request
 model = CovidAudioClassifier(num_labels=5)
-# Ensure 'hinge.pth' is in the same folder
-model.load_state_dict(torch.load('hinge.pth', map_location=device))
+# Ensure 'hinge_dropout.pth' is in the same folder
+model.load_state_dict(torch.load('hinge_dropout.pth', map_location=device))
 model.to(device)
 model.eval()
 
