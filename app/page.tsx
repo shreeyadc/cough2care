@@ -24,9 +24,11 @@ export default function Page() {
         <div className="hero-content">
           <h1>Cough2Care</h1>
           <p>Early detection of pneumonia and tuberculosis using cough sound AI.</p>
-          <button className="btn primary" style={{ marginTop: "24px" }}>
-            Start Screening
-          </button>
+          <Link href="/login">
+            <button className="btn primary" style={{ marginTop: "24px" }}>
+              Start Screening
+            </button>
+          </Link>
         </div>
 
         <div className="glass-card">
