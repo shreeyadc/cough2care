@@ -23,7 +23,7 @@ export default function Page() {
       <section className="hero">
         <div className="hero-content">
           <h1>Cough2Care</h1>
-          <p>Early detection of pneumonia and tuberculosis using cough sound AI.</p>
+          <p>Early detection of pneumonia and asthma using cough sound AI.</p>
           <Link href="/login">
             <button className="btn primary" style={{ marginTop: "24px" }}>
               Start Screening
@@ -43,7 +43,7 @@ export default function Page() {
           <div className="card-text">
             <h3>How Cough2Care Works</h3>
             <p>
-              Our AI analyzes cough sounds to detect early signs of pneumonia and tuberculosis — fast, accurate, and from your smartphone.
+              Our AI analyzes cough sounds to detect early signs of pneumonia and tuberculosis — fast, accurate and from your smartphone.
             </p>
           </div>
         </div>
