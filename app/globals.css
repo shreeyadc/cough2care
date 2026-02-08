@@ -216,7 +216,7 @@ html, body {
 .section h2 {
   font-size: 36px;
   margin-bottom: 10px; /* reduce space below title */
-  margin-top: -20px;   /* move title slightly UP */
+  margin-top: -50px;   /* move title slightly UP */
   color: #4fd1c5;
   font-weight: 700;
   letter-spacing: 0.5px;
