@@ -18,18 +18,32 @@ export default function DashboardPage() {
   const handleRecordingComplete = async (file: File) => {
     try {
       const formData = new FormData();
-      formData.append("audio", file);
+      formData.append("file", file);
 
-      const response = await fetch("/api/analyze-cough", {
+      const response = await fetch("http://localhost:8000/predict", {
         method: "POST",
-        body: formData,
+        body: formData
       });
 
       if (!response.ok) throw new Error("Failed to analyze audio");
 
       const data = await response.json();
-      setRiskScores(data.scores);
-      setSpectrogram(data.spectrogramUrl || null);
+      console.log("Received data:", data);
+
+      // Explicitly map the backend keys to your state keys
+      // Also convert 0.56 -> 56 for better UI display
+      const newScores: RiskScores = {
+        cold: Math.round(data.predictions.cold * 100),
+        cough: Math.round(data.predictions.cough * 100),
+        pneumonia: Math.round(data.predictions.pneumonia * 100),
+        asthma: Math.round(data.predictions.asthma * 100),
+        covid: Math.round(data.predictions.covid * 100),
+      };
+
+      console.log("Mapped scores:", newScores);
+
+      setRiskScores(newScores);
+      setSpectrogram(data.image || null);
     } catch (error) {
       console.error(error);
       alert("Failed to analyze cough. Please try again.");
@@ -113,16 +127,30 @@ export default function DashboardPage() {
                 <h3>Spectrogram</h3>
                 <p style={{ opacity: 0.7, marginTop: "8px" }}>A visual of your cough</p>
                 <div
-                  style={{
-                    height: "160px",
-                    marginTop: "16px",
-                    borderRadius: "12px",
-                    background: spectrogram
-                      ? `url(${spectrogram}) center/cover no-repeat`
-                      : "radial-gradient(circle at center, rgba(255,80,80,0.45), rgba(0,0,0,0.85))",
-                  }}
-                />
-              </div>
+  style={{
+    height: "160px",
+    marginTop: "16px",
+    borderRadius: "12px",
+    overflow: "hidden", // Keeps the image inside the rounded corners
+    background: !spectrogram 
+      ? "radial-gradient(circle at center, rgba(255,80,80,0.45), rgba(0,0,0,0.85))" 
+      : "transparent",
+  }}
+>
+  {spectrogram && (
+    <img 
+      src={spectrogram} 
+      alt="Spectrogram" 
+      style={{ 
+        width: "100%", 
+        height: "100%", 
+        objectFit: "cover", // Ensures it fills the box like background-size: cover
+        display: "block" 
+      }} 
+    />
+  )}
+</div>
+</div>
 
               <div className="card" style={{ height: "400px" }}>
                 <h3>Risk Explanation</h3>
