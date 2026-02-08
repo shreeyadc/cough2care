@@ -544,3 +544,36 @@ html, body {
   margin: 0 auto;
   padding: 0 20px;
 }
+
+/* ================= DASHBOARD PURPLE NEON THEME ================= */
+
+/* Muted dark cyan / blue-green background */
+.dashboard-page {
+  background: radial-gradient(
+    circle at top,
+    #06363d,   /* muted dark cyan */
+    #020617    /* deep navy (matches your site) */
+  );
+  min-height: 100vh;
+  padding-top: 90px; /* header offset */
+  padding-bottom: 32px;
+}
+
+/* Neon purple glow for tiles */
+.card,
+.panel,
+.glass-card {
+  border: 1px solid rgba(168, 85, 247, 0.9); /* neon purple */
+  box-shadow:
+    0 0 6px rgba(168, 85, 247, 0.35),
+    0 0 14px rgba(168, 85, 247, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.card:hover,
+.panel:hover,
+.glass-card:hover {
+  box-shadow:
+    0 0 10px rgba(168, 85, 247, 0.6),
+    0 0 22px rgba(168, 85, 247, 0.45);
+}
