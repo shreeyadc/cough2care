@@ -1,6 +1,8 @@
 'use client';
 import React from "react";
 import "./globals.css";
+import Link from "next/link";
+
 
 export default function Page() {
   return (
@@ -10,7 +12,10 @@ export default function Page() {
       <header className="site-header">
         <div className="header-inner">
           <span className="logo">AI-Powered Respiratory Screening</span>
-          <button className="btn">Login</button>
+          <Link href="/login">
+            <button className="btn">Login</button>
+          </Link>
+
         </div>
       </header>
 
