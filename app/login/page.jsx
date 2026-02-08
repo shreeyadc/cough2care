@@ -20,7 +20,7 @@ export default function LoginPage() {
             className="login-form"
             onSubmit={(e) => {
               e.preventDefault();
-              window.location.href = "/api/auth/login";
+              window.location.href = "/api/auth/login?returnTo=/dashboard";
             }}
           >
             <input type="email" placeholder="Email address" required />
