@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useMemo, useEffect, useState } from "react";
+import React, { useMemo } from "react";
 
 export type RiskScores = {
-  cold: number;
   cough: number;
-  pneumonia: number;
+  cold: number;
   asthma: number;
+  pneumonia: number;
   covid: number;
 };
 
@@ -14,48 +14,14 @@ type AnalyticsBoardProps = {
   scores: RiskScores;
 };
 
-const AnimationSpeed = 2;
-
 const AnalyticsBoard: React.FC<AnalyticsBoardProps> = ({ scores }) => {
-  const [animatedScores, setAnimatedScores] = useState<RiskScores>({
-    cold: 0,
-    cough: 0,
-    pneumonia: 0,
-    asthma: 0,
-    covid: 0,
-  });
-
-  useEffect(() => {
-    let animationFrame: number;
-
-    const animate = () => {
-      let done = true;
-      const nextScores: RiskScores = { ...animatedScores };
-
-      (Object.keys(scores) as Array<keyof RiskScores>).forEach((key) => {
-        const target = scores[key];
-        const current = animatedScores[key];
-        if (current < target) {
-          nextScores[key] = Math.min(current + AnimationSpeed, target);
-          done = false;
-        }
-      });
-
-      setAnimatedScores(nextScores);
-
-      if (!done) {
-        animationFrame = requestAnimationFrame(animate);
-      }
-    };
-
-    animate();
-
-    return () => cancelAnimationFrame(animationFrame);
-  }, [scores]);
+  // 1. REMOVED: useState for animation
+  // 2. REMOVED: useEffect for animation
 
   const sortedRisks = useMemo(() => {
-    return Object.entries(animatedScores).sort((a, b) => b[1] - a[1]);
-  }, [animatedScores]);
+    // 3. Use 'scores' directly instead of 'animatedScores'
+    return Object.entries(scores).sort((a, b) => b[1] - a[1]);
+  }, [scores]);
 
   return (
     <div
@@ -76,11 +42,13 @@ const AnalyticsBoard: React.FC<AnalyticsBoardProps> = ({ scores }) => {
 
 export default AnalyticsBoard;
 
-// Color-coded circles
+// ... Keep RiskCircle exactly the same ...
 function RiskCircle({ label, value }: { label: string; value: number }) {
   const radius = 50;
   const circumference = 2 * Math.PI * radius;
-  const offset = circumference - (value / 100) * circumference;
+  // Ensure value doesn't exceed 100 for the stroke calculation
+  const safeValue = Math.min(Math.max(value, 0), 100); 
+  const offset = circumference - (safeValue / 100) * circumference;
 
   let strokeColor = "#38a169"; // green
   if (value > 70) strokeColor = "#e53e3e"; // red
@@ -108,6 +76,7 @@ function RiskCircle({ label, value }: { label: string; value: number }) {
           strokeDashoffset={offset}
           strokeLinecap="round"
           transform="rotate(-90 60 60)"
+          style={{ transition: "stroke-dashoffset 0.5s ease-out" }} // CSS Animation is better!
         />
         <text
           x="60"
