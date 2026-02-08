@@ -215,18 +215,22 @@ html, body {
 
 .section h2 {
   font-size: 36px;
-  margin-bottom: 30px;
+  margin-bottom: 10px; /* reduce space below title */
+  margin-top: -20px;   /* move title slightly UP */
   color: #4fd1c5;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
+
 
 /* ================= CARDS GRID ================= */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
+  margin-top: 70px; /* push cards down */
 }
+
 
 /* About section cards - black background */
 .card {
@@ -325,4 +329,107 @@ html, body {
   .glass-card .wave-bars span {
     width: 8px;
   }
+}
+
+/* ================= LOGIN PAGE ================= */
+
+.login-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Background image */
+  background: 
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.85)),
+    url('/images/bluelungs.png');
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+.login-card {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 40px 36px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+  text-align: center;
+}
+
+.login-card h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: white;
+}
+
+.login-subtitle {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+.login-form {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.login-form input {
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(0,0,0,0.5);
+  color: white;
+  font-size: 16px;
+  outline: none;
+}
+
+.login-form input::placeholder {
+  color: #9ca3af;
+}
+
+.login-form input:focus {
+  border-color: #4fd1c5;
+  box-shadow: 0 0 0 2px rgba(79, 209, 197, 0.2);
+}
+
+.login-links {
+  margin-top: 18px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.login-links a {
+  color: #4fd1c5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signup-link {
+  color: #4fd1c5;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.google-btn {
+  background: white;
+  color: black;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.google-btn:hover {
+  background: #f3f4f6;
 }
