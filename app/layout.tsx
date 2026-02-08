@@ -1,11 +1,13 @@
+// app/layout.tsx
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google"; // <-- import Poppins
+import { Poppins } from "next/font/google";
+import { UserProvider } from "@auth0/nextjs-auth0/client";
 import "./globals.css";
 
 // Configure Poppins
 const poppins = Poppins({
   variable: "--font-poppins",
-  weight: ["400", "500", "600", "700", "800"], // choose the weights you need
+  weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -17,13 +19,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body className={`${poppins.variable} antialiased`}>
-        {children}
+        <UserProvider>
+          {children}
+        </UserProvider>
       </body>
     </html>
   );
