@@ -433,3 +433,114 @@ html, body {
 .google-btn:hover {
   background: #f3f4f6;
 }
+
+/* ================= DASHBOARD ================= */
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  height: 100vh;
+  padding-top: 70px; /* header offset */
+}
+
+/* Sidebar */
+.dashboard-sidebar {
+  background: rgba(0, 0, 0, 0.75);
+  border-right: 1px solid rgba(255,255,255,0.1);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sidebar-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #4fd1c5;
+}
+
+.session-item {
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.05);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.session-item:hover {
+  background: rgba(79, 209, 197, 0.15);
+}
+
+/* Main Content */
+.dashboard-main {
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+/* Panels */
+.panel {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.panel h3 {
+  font-size: 20px;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+/* Fake cough graph */
+.cough-graph {
+  height: 180px;
+  background: linear-gradient(
+    to top,
+    #16a34a,
+    #facc15,
+    #dc2626
+  );
+  border-radius: 12px;
+  opacity: 0.85;
+}
+
+/* Risk bars */
+.risk-bar {
+  margin-bottom: 12px;
+}
+
+.risk-label {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.risk-progress {
+  height: 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+
+.risk-fill {
+  height: 100%;
+  border-radius: 10px;
+}
+
+/* Lung visual placeholder */
+.lung-visual {
+  height: 260px;
+  background: radial-gradient(circle, #4fd1c5 0%, transparent 70%);
+  border-radius: 16px;
+  opacity: 0.6;
+}
+
+/* ================= LAYOUT WRAPPER ================= */
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
