@@ -563,7 +563,7 @@ html, body {
 .card,
 .panel,
 .glass-card {
-  border: 1px solid rgba(168, 85, 247, 0.9); /* neon purple */
+  border: 1px solid rgba(88, 80, 236, 0.9); 
   box-shadow:
     0 0 6px rgba(168, 85, 247, 0.35),
     0 0 14px rgba(168, 85, 247, 0.25);
